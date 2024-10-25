@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Meta tags included for accessibility and responsive design -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title> <!--Title of the webpage displayed at the top of the search engine-->
+    <link rel="stylesheet" href="styles.css"> <!--Link the css style sheet to apply it-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="javascript.js" defer></script> <!-- link java script file to the page-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Favicon logo (website logo above the search bar)-->
+    <link rel="icon" href="images/favicon.ico">   
+    <!--Font Awesome link-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<!--Main page content goes between the body tags-->
+<body onload="display_ct()">
+    
+<!-- Anchor tag for skip-to-top function -->
+<a id="top"></a>
+
+
+<!--Navigation Bar-->
+<nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top" data-bs-theme="dark">
+    <a class="navbar-brand offset-4"  href="index.html">
+        <img id="Logo" src="images/favicon.ico"  alt="Logo">
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+        <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item nav-item-divider">
+        <a class="nav-link" href="contactform.html">Contact Us</a>
+        </li>
+        <li class="nav-item nav-item-divider">
+            <a class="nav-link" href="booking.html">Book Now</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link">
+                <i class="fa-solid fa-magnifying-glass-plus" onclick="increase_font_size()">
+                </i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link">
+                <i class="fa-solid fa-magnifying-glass-minus" onclick="decrease_font_size()">
+                </i>
+            </a>
+        </li>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle order-lg-1" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Accessibility
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" onclick="toggleTheme()"> Toggle High Contrast </a>
+            <a class="dropdown-item" onclick="resetFontSize()"> Reset Text Size </a>
+            <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#bottom">Scroll to Bottom</a>
+                <a class="dropdown-item" href="#top">Scroll to Top</a>
+            </div>
+        </li>
+    </ul>
+    <div class="row">
+        <div class="col">
+            <input id="tags" class="form-control mr-sm-1" type="search" 
+            placeholder="Search" aria-label="Search" onchange="searchRedirect()" autocomplete="off">
+        </div>
+        
+        <div class="col-auto">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </div>
+    </div>
+    </div>
+</nav>
+
+  <!--Display Time-->
+  <p id="time"></p>
+
+  <!-- Movie Slide Show -->
+  <div class="slideshow-container">
+    <div class="slideshow-slide">
+        <img src="images/americanSoc.webp" alt="American Soc">
+        <div class="overlay-text">
+            <div class="row">
+                <div class="col">
+                    <div class="col-6 col-md-3 d-none d-md-block">
+                        <img class="movie_poster" src="images/TTMFCTRSposter.webp">
+                    </div>
+                    <h2 class="fw-bold fs-3 fs-md-2">The American Society of Magical Negroes</h2>
+                    <p class="fs-6 fs-md-5">Comedy, Fantasy
+                    <image src="movie_rating_icons/rated_12A.png" alt="rating"> </image></p>
+                    <i class="fa-solid fa-circle-play fa-2x" onclick="playVideo('gizIbhk5Eu4')"></i>
+                    <div id="videoPlayer_3" class="video-player"></div>
+                    <i class="close-button fa-solid fa-circle-xmark fa-2x" onclick="closeVideo('videoPlayer_3')"></i>
+                    <a id="book-now-button" href="booking.html">Book Now</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slideshow-slide">
+        <img src="images/iss.webp" alt="ISS">
+        <div class="overlay-text">
+            <div class="row">
+                <div class="col">
+                    <div class="col-6 col-md-3 d-none d-md-block">
+                        <img class="movie_poster" src="images/issPoster.jpg">
+                    </div>
+                    <h2 class="fw-bold fs-3 fs-md-2">I.S.S.</h2>
+                    <p class="fs-6 fs-md-5">Sci-Fi, Thriller
+                    <image src="movie_rating_icons/rated_18.png" alt="rating"> </image></p>
+                    <i class="fa-solid fa-circle-play fa-2x" onclick="playVideo('Yw04cw-KWGA')"></i>
+                    <div id="videoPlayer_1" class="video-player"></div>
+                    <i class="close-button fa-solid fa-circle-xmark fa-2x" onclick="closeVideo('videoPlayer_1')"></i>
+                    <a id="book-now-button" href="booking.html">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+
+    <div class="slideshow-slide">
+        <img src="images/TTMFCTRS.webp" alt="Slide 3">
+        <div class="overlay-text">
+            <div class="row">
+                <div class="col">
+                    <div class="col-6 col-md-3 d-none d-md-block">
+                        <img class="movie_poster" src="images/ttmfctrsPosterProper.jpg">
+                    </div>
+                    <h2 class="fw-bold fs-3 fs-md-2">That They May face The Rising Sun</h2>
+                    <p class="fs-6 fs-md-5">Drama
+                    <image src="movie_rating_icons/rated_12A.png" alt="rating"> </image></p>
+                    <i class="fa-solid fa-circle-play fa-2x" onclick="playVideo('4IO8DEhlRe0')"></i>
+                    <div id="videoPlayer_4" class="video-player"></div>
+                    <i class="close-button fa-solid fa-circle-xmark fa-2x" onclick="closeVideo('videoPlayer_4')"></i>
+                    <a id="book-now-button" href="booking.html">Book Now</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slideshow-slide">
+        <img src="images/ScaryGirl.webp" alt="ScaryGirl">
+        <div class="overlay-text">
+            <div class="row">
+                <div class="col">
+                    <div class="col-6 col-md-3 d-none d-md-block">
+                        <img class="movie_poster" src="images/ScaryGirlPoster.webp">
+                    </div>
+                    <h2 class="fw-bold fs-3 fs-md-2">ScaryGirl</h2>
+                    <p class="fs-6 fs-md-5">Adventure, Animation, Fantasy 
+                    <image src="movie_rating_icons/rated_pg.png" alt="rating"> </image></p>
+                    <i class="fa-solid fa-circle-play fa-2x" onclick="playVideo('l3Zbh_GPNCM')"></i>
+                    <div id="videoPlayer_5" class="video-player"></div>
+                    <i class="close-button fa-solid fa-circle-xmark fa-2x" onclick="closeVideo('videoPlayer_5')"></i>
+                    <button id="book-now-button" href="booking.html">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slideshow-slide">
+        <img src="images/starwars.webp" alt="StarWars 25th Anniversary">
+        <div class="overlay-text">
+            <div class="row">
+                <div class="col">
+                    <div class="col-6 col-md-3 d-none d-md-block">
+                        <img class="movie_poster" src="images/starwarsPoster.webp">
+                    </div>
+                    <h2 class="fw-bold fs-3 fs-md-2">StarWars: Episode 1 25th Anniversary</h2>
+                    <p class="fs-6 fs-md-5">Action, Adventure, Fantasy, Thriller 
+                    <image src="movie_rating_icons/rated_pg.png" alt="rating"> </image></p>
+                    <i class="fa-solid fa-circle-play fa-2x" onclick="playVideo('bD7bpG-zDJQ')"></i>
+                    <div id="videoPlayer_2" class="video-player"></div>
+                    <i class="close-button fa-solid fa-circle-xmark fa-2x" onclick="closeVideo('videoPlayer_2')"></i>
+                    <button id="book-now-button" href="booking.html">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+    <!-- Previous and next buttons -->
+    <div class="SlideshowControl">
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+    <!--Home page Intro-->
+    <div class="intro">
+            <h1> Welcome to nY Cinemas!</h1>
+
+            <p> Experience the magic of the silver screen in our state-of-the-art theaters. 
+                From blockbusters to classics, our immersive experience promises unforgettable 
+                moments. Join us for an unparalleled cinematic journey.
+            </p>
+    </div>
+
+    <!--Image Gallery-->
+    <div class="row js-slidein">
+        <div class="image-gallery">
+            <div class="gallery-item">
+                <img src="images/cinema1.webp" alt="Cinema screen">
+                <div class="text-block">
+                    <h4>Hawaiian Leather</h4>
+                    <p>Enjoy our state of the art Hawaiian leather seats</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/cinemaContact.webp" alt="Cinema shop">
+                <div class="text-block">
+                    <h4>Stylish Shop</h4>
+                    <p>Grab a popcorn or a yummy drink & more...!</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/outsideCinema.jpg" alt="View outside the cinema">
+            </div>
+        </div>
+    </div>
+    
+    
+    
+
+    <!--Calls the vertical dividing line class (refer to css)-->
+    <div class="vertical-line"></div>
+    <!--Bootstrap for vertical line-->
+    <div class="vr vr-blurry" style="height: 400px;"></div>
+
+    <!--About Section-->
+    <div class="container js-slidein">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="H_LeftSide text-center"> 
+                    <div class="H_Content1"> 
+                        <h2>About nY Cinemas</h2>
+    
+                        <p> At nY Cinemas, we believe that watching a movie is not just an activity; it's an 
+                            experience. That's why we're dedicated to providing our audiences with the best 
+                            cinematic experience possible, from the moment they step through 
+                            our doors to the final credits roll.<br>
+                            <span id="toggle-button1" title="Show more content"><u>show more...</u></span><br><br>
+                            <span id="show-more1">Our story began over a decade ago, with a vision to create a space where movie enthusiasts could come together to enjoy the latest blockbusters, timeless classics, and everything in between. Since then, we've grown into a beloved destination for film lovers of all ages, offering state-of-the-art facilities, comfortable seating, and unparalleled customer service.<br>
+
+                                But nY Cinemas is more than just a movie theater – it's a community. From our friendly staff to our loyal patrons, we're united by our shared love of film and the joy it brings to our lives. Whether you're a casual moviegoer or a dedicated cinephile, you'll always feel at home at nY Cinemas.<br>
+                                
+                                As we continue to evolve and grow, our commitment to excellence remains unwavering. We're constantly exploring new ways to enhance the movie-watching experience, from innovative technology to exciting special events. With each new day, we strive to exceed expectations and create memories that will last a lifetime.<br>
+                        </span>
+                            <a href="https://www.learnmoreuk.com/" title="Go to Contact Us Page">Learn more <span>here</span></a>
+    
+                        </p>
+                    </div>
+                    
+                    <div class="H_Content3">
+                        <h2>Why US? </h2>
+    
+                        <p> Exceptional Movie Experience: At nY Cinemas, we're committed to delivering an 
+                            exceptional movie experience. With state-of-the-art facilities and comfortable 
+                            seating, we provide the perfect environment for you to enjoy the latest 
+                            blockbusters or indie favorites. Our theaters are equipped with cutting-edge 
+                            technology to ensure that every screening is a memorable one.
+                            <span id="toggle-button2" title="Show more content"><u>show more...</u></span><br><br>
+                            <span id="show-more2">Community-Centric Approach: We pride ourselves on being more than just a cinema; 
+                            we're an integral part of the community. From hosting special screenings to 
+                            collaborating with local businesses and organizations, we strive to create 
+                            meaningful connections and enrich the lives of our patrons. At nY Cinemas, you're 
+                            not just a moviegoer - you're part of our extended family.<br><br>
+                            
+                            Dedication to Customer Satisfaction: Your satisfaction is our top priority at nY 
+                            Cinemas. Our friendly and knowledgeable staff are always on hand to assist you 
+                            and ensure that your visit is enjoyable from start to finish. Whether it's 
+                            helping you find the perfect seat or addressing any concerns you may have, we're 
+                            here to make your movie-going experience as seamless as possible.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <!-- Place holder image-->
+                <div class="H_RightSide text-center">
+                    <img src="images/staff.webp" alt="Cinema Staff" class="img-fluid rounded-circle">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+    <!--Bootstrap for horizontal line-->
+    <hr class="hr hr-blurry js-slidein" />
+
+
+    <!--Accordion-->
+    <div class="row">
+        <div id="accordion" class="accordion">
+            <h3>Now Showing❗</h3>
+            <div>
+                <p>
+                    Check out our latest movie releases! From action-packed blockbusters to heartwarming dramas, we have something for everyone. Grab your popcorn and get ready for an unforgettable cinematic experience.
+                </p>
+            </div>
+            <h3>Coming Soon 👻</h3>
+            <div>
+                <p>
+                    Get a sneak peek at the upcoming movies hitting our screens soon. Stay tuned for exciting trailers, exclusive behind-the-scenes footage, and release dates. Be the first to know what's next in the world of cinema.
+                </p>
+            </div>
+            <h3>Special Screenings 🤫</h3>
+            <div>
+                <p>
+                    Experience cinema like never before with our special screenings. Whether it's a classic film marathon, a midnight showing of cult favorites, or a themed event, these screenings offer something unique for movie enthusiasts.
+                </p>
+                <ul>
+                    <li>Sci-Fi Weekend Extravaganza</li>
+                    <li>Halloween Horror Nights</li>
+                    <li>Retro Movie Mondays</li>
+                </ul>
+            </div>
+            <h3>Exclusive Offers 💰</h3>
+            <div>
+                <p>
+                    Don't miss out on our exclusive offers and promotions. From discounted ticket prices to loyalty rewards, we make your movie-going experience even more enjoyable. Join our membership program today to unlock special benefits.
+                </p>
+                <p>
+                    Sign up for our newsletter to receive updates on upcoming movies, special events, and exclusive offers straight to your inbox.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!--Bootstrap for horizontal line-->
+    <hr class="hr hr-blurry"/>
+
+
+    
+    
+
+    <!-- Anchor tag for Scroll-to-bottom feature-->
+    <div id="bottom"></div>
+
+    <!--Footer-->
+    <footer class="py-3 my-4">
+        <div class="container">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item">
+                    <a class="nav-link px-2 text-body-secondary footer-link" href="index.html">Home</a>    
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-2 text-body-secondary footer-link" href="contactform.html">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-2 text-body-secondary footer-link" href="#">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-2 text-body-secondary footer-link" href="#">FAQs</a>
+                </li>
+
+                <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                    <li class="ms-3">
+                        <a class="text-body-secondary footer-icon" href="https://twitter.com/">
+                            <svg class="bi" width="24" height="24">
+                                <use xlink:href="#twitter">
+                                    <symbol id="twitter" viewBox="0 0 16 16">
+                                        <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"></path>
+                                    </symbol>
+                                </use>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="ms-3">
+                        <a class="text-body-secondary footer-icon" href="https://www.instagram.com/">
+                            <svg class="bi" width="24" height="24">
+                                <use xlink:href="#instagram">
+                                    <symbol id="instagram" viewBox="0 0 16 16">
+                                        <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path>
+                                    </symbol>
+                                </use>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="ms-3">
+                        <a class="text-body-secondary footer-icon" href="https://www.facebook.com/">
+                            <svg class="bi" width="24" height="24">
+                                <use xlink:href="#facebook">
+                                    <symbol id="facebook" viewBox="0 0 16 16">
+                                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"></path>
+                                      </symbol>
+                                </use>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </ul>
+            <p class="text-center text-body-secondary">© nY Cinemas, Inc</p>
+        </div>
+    </footer>
+
+    <!--Contrast Toggler (Sun/Moon)-->
+    <div class="contrast">
+        <svg class="d.none" xmlns="http://www.w3.org/2000/svg">
+            <symbol id="check2" viewBox="0 0 16 16">
+                <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path>
+            </symbol>
+            <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+                <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"></path>
+                <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"></path>
+            </symbol>
+            <symbol id="sun-fill" viewBox="0 0 16 16">
+                <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"></path>
+            </symbol>
+        </svg>
+        
+  
+        <button class="btn btn-bd-primary py-2 d-flex align-items-center" id="bd-theme" type="button" aria-label="Toggle theme (light)" onclick="toggleTheme()">
+            <svg class="bi my-1 theme-icon-active" width="1em" height="1em"><use href="#sun-fill"></use></svg>
+            <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+        </button>
+    </div>
+
+
+    <!--Accessibility Go to top // Go to bottom buttons-->
+    <a href="#top" id="back-to-top"><i class="fas fa-arrow-up" aria-hidden="true"></i></a>
+    <a href="#bottom" id="back-to-bottom"><i class="fas fa-arrow-down" aria-hidden="true"></i></a>
+    
+    
+    
+    <!-- Bootstrap links -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+</body>
+</html>
